@@ -88,6 +88,51 @@ exports.facultyDetails=(req,res)=>{
             }
     })
 }
+
+exports.facultyGetData=(req,res)=>{  
+
+    Faculty.findOne({_id:req.body.id})
+    .exec((err,data)=>{
+          if(err){
+                console.log(err);
+                return responseError(res,201,4);
+            } 
+           if(data){
+                const {_id,fname,lname,email,username,schoolName,address,pic} =data;
+                const userDetail = {_id,fname,lname,email,username,schoolName,address,pic}; 
+                return responseSuccess(res,200,userDetail);
+            }else{
+                return responseError(res,201,12);
+            }
+    })
+}
+exports.facultyUpdate=(req,res)=>{ 
+    var pic=req.files.pic[0].filename;
+    console.log(pic)
+    
+     
+    const {id,fname,lname,email,username,password,address,schoolName} = req.body;
+    Faculty.findOneAndUpdate({_id:id},{$set:{fname,lname,email,username,password,address,schoolName,pic}})
+    .exec((err,data)=>{
+          if(err){
+                console.log(err);
+                return responseError(res,201,4);
+            } 
+           if(data){
+                const {_id,fname,lname,email,username,schoolName,address,pic} =data;
+                const userDetail = {_id,fname,lname,email,username,schoolName,address,pic}; 
+                return responseSuccess(res,200,userDetail);
+            }else{
+                return responseError(res,201,12);
+            }
+    })
+}
+
+
+
+
+
+
 exports.facultyDelete=(req,res)=>{ 
     console.log(req.body)
     Faculty.findOneAndDelete({_id:req.body.deleteId})

@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import {AdminRouter} from "./PrivateRoute"
 
 // components
 
@@ -20,6 +21,9 @@ import SchoolDetails from "views/admin/SchoolDetails";
 import AddSchools from "views/admin/AddSchools";
 import FacultyDetails from "views/admin/FacultyDetails";
 import AddFaculty from "views/admin/AddFaculty";
+import EditStudent from "views/admin/EditStudent";
+import EditFaculty from "views/admin/EditFaculty";
+import EditSchool from "views/admin/EditSchool";
 
 export default function Admin() {
   return (
@@ -31,14 +35,16 @@ export default function Admin() {
         <HeaderStats />
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <Switch>
-            <Route path="/admin/dashboard" exact component={Dashboard} /> 
-            <Route path="/admin/tables" exact component={Tables} />
-            <Route path="/admin/addstudents" exact component={AddStudents} />
-            <Route path="/admin/studentdetails" exact component={StudentDetails} />
-            <Route path="/admin/schooldetails" exact component={SchoolDetails} />
-            <Route path="/admin/addschools" exact component={AddSchools} />
-            <Route path="/admin/facultydetails" exact component={FacultyDetails} />
-            <Route path="/admin/AddFaculty" exact component={AddFaculty} />
+            <AdminRouter path="/admin/dashboard" exact component={Dashboard} />  
+            <AdminRouter path="/admin/addstudents" exact component={AddStudents} />
+            <AdminRouter path="/admin/studentdetails" exact component={StudentDetails} />
+            <AdminRouter path="/admin/schooldetails" exact component={SchoolDetails} />
+            <AdminRouter path="/admin/addschools" exact component={AddSchools} />
+            <AdminRouter path="/admin/facultydetails" exact component={FacultyDetails} />
+            <AdminRouter path="/admin/AddFaculty" exact component={AddFaculty} />
+            <AdminRouter path="/admin/studentedit/:id" exact component={EditStudent} />
+            <AdminRouter path="/admin/facultyedit/:id" exact component={EditFaculty} />
+            <AdminRouter path="/admin/schooledit/:id" exact component={EditSchool} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
           <FooterAdmin />

@@ -88,6 +88,52 @@ exports.schoolDetails=(req,res)=>{
             }
     })
 }
+
+
+exports.schoolGetData=(req,res)=>{  
+    
+    School.findOne({_id:req.body.id})
+    .exec((err,data)=>{
+          if(err){
+                console.log(err);
+                return responseError(res,201,4);
+            } 
+           if(data){
+                const {_id,schoolName,contactNumber,username,email,address,pic} =data;
+                const userDetail = {_id,schoolName,contactNumber,username,email,address,pic}; 
+                return responseSuccess(res,200,userDetail);
+            }else{
+                return responseError(res,201,12);
+            }
+    })
+}
+exports.schoolUpdate=(req,res)=>{ 
+    var pic=req.files.pic[0].filename;
+    console.log(pic)
+    
+     
+    const {id,schoolName,contactNumber,username,email,address} = req.body;
+    School.findOneAndUpdate({_id:id},{$set:{schoolName,contactNumber,username,email,address,pic}})
+    .exec((err,data)=>{
+          if(err){
+                console.log(err);
+                return responseError(res,201,4);
+            } 
+           if(data){
+                const {_id,schoolName,contactNumber,username,email,address,pic} =data;
+                const userDetail = {_id,schoolName,contactNumber,username,email,address,pic}; 
+                return responseSuccess(res,200,userDetail);
+            }else{
+                return responseError(res,201,12);
+            }
+    })
+}
+
+
+
+
+
+
 exports.schoolDelete=(req,res)=>{ 
     console.log(req.body)
     School.findOneAndDelete({_id:req.body.deleteId})

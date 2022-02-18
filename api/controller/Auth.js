@@ -15,7 +15,7 @@ exports.login = (req,res) =>{
          	}
          	if(data){
          		const checkPassword = await data.authenticate(password);
-         		if(checkPassword && (data.role==="user" || data.role==="Admin")){
+         		if(checkPassword && (data.role==="admin")){
          			const token = jwt.sign({_id:data._id,role:data.role},process.env.port,{expiresIn:"1d"})
     			    res.cookie("token",token,{expiresIn:"1d"})
                     const {_id,fname,lname,email,username,role,fullname} = data;

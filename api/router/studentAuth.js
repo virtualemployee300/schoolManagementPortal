@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const controllerPath = "../controller";
-const {login,studentAdd,studentDetails,studentDelete} = require(`${controllerPath}/studentAuth`);
+const {login,studentAdd,studentDetails,studentDelete,studentGetData,studentUpdate} = require(`${controllerPath}/studentAuth`);
 const storage = multer.diskStorage({
   destination:function (req, file, cb) {
     cb(null, "./uploads")
@@ -23,5 +23,7 @@ var uploadFile=upload.fields([{name: 'pic'}]);
  router.post("/studentAdd",uploadFile,studentAdd);
  router.get("/studentDetails",studentDetails);
  router.post("/studentDelete",studentDelete);
+ router.post("/studentGetData",studentGetData);
+ router.post("/studentUpdate",uploadFile,studentUpdate);
 
 module.exports = router;

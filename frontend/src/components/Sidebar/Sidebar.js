@@ -1,6 +1,8 @@
 /*eslint-disable*/
 import React from "react";
 import { Link } from "react-router-dom";
+import Accordion from "./Accordion";
+
 
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
@@ -173,6 +175,12 @@ export default function Sidebar() {
                   Manage Students
                 </Link>
               </li>
+              
+               <li className="items-center">
+              <Accordion
+               title="CMS Pages"
+               content=""
+              /></li>
 
             </ul> 
 

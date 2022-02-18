@@ -50,6 +50,15 @@ const NotificationDropdown = (props) => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       > 
+      <Link
+          to={`/admin/facultyedit/${props.idData}`}
+          className={
+            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+          }
+          
+        >
+          Edit
+        </Link>
         <Link
           to="#delete"
           className={
