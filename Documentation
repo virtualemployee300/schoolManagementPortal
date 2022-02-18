@@ -1,0 +1,15 @@
+>How To Run</h1>
+Notice* : first run Api folder after then Frontend folder
+
+Go in project folder open command
+Write command => Npm install
+After installation complete write this command =>  npm start
+
+
+Complete Module
+Landing Demo Page
+Dashboard Page
+Manage Schools => Schools Details and Add New School (completed)
+Manage Faculties => Faculties Details and Add New Faculty (completed) 
+Manage Students => Student Details and Add New Student (completed) 
+Database uses MongoDB
